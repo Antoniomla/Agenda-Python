@@ -1,12 +1,10 @@
-#TUPLA
-CATEGORIAS_VALIDAS =("PESSOAL","TRABALHO", "FAMILIA")
-#LISTA 
+from constantes import CATEGORIAS_VALIDAS
 agenda = []
 
 def cadastrar_contato(nome, telefone,email,categoria):
     if categoria not in CATEGORIAS_VALIDAS:
         print(f"categoria Inválida! Use uma dessas: {CATEGORIAS_VALIDAS}")
-        return False
+        return 
 
     contato = {
         "nome" : nome,
@@ -60,46 +58,3 @@ def remover_contato(nome):
     print(f"Contato '{nome}' não encontrado.")
     return False
 
-def exibir_menu():
-
-    print("\n   AGENDA DE CONTATOS ")
-    print("1 - Cadastrar contato")
-    print("2 - Listar contatos")
-    print("3 - Buscar contato")
-    print("4 - Remover contato")
-    print("5 - Sair")
-
-def main():
-   
-    while True:  # loop infinito - só sai quando escolhermos "5" (break)
-        exibir_menu()
-        opcao = input("Escolha uma opção: ")
- 
-        if opcao == "1":
-            nome = input("Nome: ")
-            telefone = input("Telefone: ")
-            email = input("Email: ")
-            print(f"Categorias disponíveis: {CATEGORIAS_VALIDAS}")
-            categoria = input("Categoria: ")
-            cadastrar_contato(nome, telefone, email, categoria)
- 
-        elif opcao == "2":
-            listar_contatos()
- 
-        elif opcao == "3":
-            termo = input("Digite o nome (ou parte dele) para buscar: ")
-            buscar_contato(termo)
- 
-        elif opcao == "4":
-            nome = input("Nome do contato a remover: ")
-            remover_contato(nome)
- 
-        elif opcao == "5":
-            print("Até mais!")
-            break 
- 
-        else:
-            print("Opção inválida, tente novamente.")
-
-if __name__ == "__main__":
-    main()
